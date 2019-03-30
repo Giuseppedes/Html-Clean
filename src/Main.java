@@ -21,7 +21,8 @@ public class Main {
             //BufferedReader br = new BufferedReader(new FileReader(fileChooser.getSelectedFile()));
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
-                            new FileInputStream(fileChooser.getSelectedFile()), "Cp1252"));
+                            //new FileInputStream(fileChooser.getSelectedFile()), "Cp1252"));
+                            new FileInputStream(fileChooser.getSelectedFile()), "UTF8"));
 
             try {
                 StringBuilder sb = new StringBuilder();
@@ -53,13 +54,14 @@ public class Main {
                     .replace("á", "-")
                     .replace("Ó", "\"")
                     .replace("Ò", "\"")
-                    .replace("Û.", "€")
-                    .replace("Û.", "€")
+                    .replace("Û.", "&euro;")
+                    .replace("Û", "&euro;")
+                    .replace("Û.", "&euro;")
                     .replace("Õ", "'")
                     .replace("¼", "&deg;")
                     .replace("¡", "&deg;")
                     .replace("ˆ", "&agrave;")
-
+                    .replace("Ž", "&egrave;")
                     .replace("\u008F", "&egrave;")
                     .replace("˜", "&ograve;")
                     .replace("\u009D", "&ugrave;")
@@ -84,6 +86,7 @@ public class Main {
                     .replaceAll("<td width=.*>", "<td>")
                     .replace("<table>", "<table class=\"table\">")
                     .replace("<table", "<div class=\"table-responsive\"><table")
+                    .replace("</table>","</table></div>")
                     .replace("<h1>", "\n<h1>")
                     .replace("<h2>", "\n<h2>")
                     .replace("<h3>", "\n<h3>")
