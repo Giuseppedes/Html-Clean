@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
 
@@ -22,7 +23,7 @@ public class Main {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
                             //new FileInputStream(fileChooser.getSelectedFile()), "Cp1252"));
-                            new FileInputStream(fileChooser.getSelectedFile()), "UTF8"));
+                            new FileInputStream(fileChooser.getSelectedFile()), StandardCharsets.UTF_8));
 
             try {
                 StringBuilder sb = new StringBuilder();
@@ -114,10 +115,6 @@ public class Main {
             writer.close();
 
             System.out.println("Done!");
-
-            char[] chars = new char[50];
-
-
 
         }
 
