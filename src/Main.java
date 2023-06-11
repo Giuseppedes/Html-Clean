@@ -19,13 +19,9 @@ public class Main {
 
             String htmlDocument;
 
-            //BufferedReader br = new BufferedReader(new FileReader(fileChooser.getSelectedFile()));
-            BufferedReader br = new BufferedReader(
+            try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(
-                            //new FileInputStream(fileChooser.getSelectedFile()), "Cp1252"));
-                            new FileInputStream(fileChooser.getSelectedFile()), StandardCharsets.UTF_8));
-
-            try {
+                            new FileInputStream(fileChooser.getSelectedFile()), StandardCharsets.UTF_8))) {
                 StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
 
@@ -37,9 +33,6 @@ public class Main {
 
                 htmlDocument = sb.toString();
 
-
-            } finally {
-                br.close();
             }
 
             htmlDocument = htmlDocument.replaceAll("(?s)<span.+?>(?-s)", "")
