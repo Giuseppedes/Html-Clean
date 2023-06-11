@@ -43,7 +43,7 @@ public class Main {
 
             htmlDocument = htmlDocument.replaceAll("(?s)<span.+?>(?-s)", "")
                     .replace("</span>", "")
-                    .replaceAll("(?s)<p.+?>(?-s)", "<p>")
+                    .replaceAll("(?s)<p(\\s[^>]*)?>", "<p>")
                     .replaceAll("(?s)<img.+?>","")
                     .replaceAll("(?s)class=.+?>",">")
                     .replaceAll("(?s)class=.+?","")
@@ -68,7 +68,8 @@ public class Main {
 
                     .replace("\t", "")
                     .replace("\n     ", " ")
-                    .replace("\r\n", " ").replace("\n", " ")
+                    .replace("\r\n", " ")
+                    .replace("\n", " ")
                     /*
                     .replace("</h1>", "\n</h1>")
                     .replace("</h2>", "\n</h2>")
@@ -92,11 +93,18 @@ public class Main {
                     .replace("<h3>", "\n<h3>")
                     .replace("<h4>", "\n<h4>")
                     .replace("<div>", "\n<div>")
-                    .replaceAll("<p>( |\t|\n|&nbsp;|<i>|<b>|</i>|</b>)*</p>","<p></p>")
-                    .replaceAll("<h1>( |\n|&nbsp;|<i>|<b>|</i>|</b>)*</h1>","<h1></h1>")
-                    .replaceAll("<h2>( |\n|&nbsp;|<i>|<b>|</i>|</b>)*</h2>","<h2></h2>")
-                    .replaceAll("<h3>( |\n|&nbsp;|<i>|<b>|</i>|</b>)*</h3>","<h3></h3>")
+                    .replaceAll("<p>( |\t|\n|&nbsp;|<i>|<b>|</i>|</b>)*</p>","<br>")
+                    .replaceAll("<h1>( |\n|&nbsp;|<i>|<b>|</i>|</b>)*</h1>","<br>")
+                    .replaceAll("<h2>( |\n|&nbsp;|<i>|<b>|</i>|</b>)*</h2>","<br>")
+                    .replaceAll("<h3>( |\n|&nbsp;|<i>|<b>|</i>|</b>)*</h3>","<br>")
                     .replace("&nbsp;", "")
+                    .replace(" ", " ")
+                    .replace("> ", ">")
+                    .replace("> ", ">")
+                    .replace("    ", " ")
+                    .replace("   ", " ")
+                    .replace("  ", " ")
+                    .replace("  ", " ")
             ;
 
 
